@@ -93,4 +93,34 @@ In composing components in this way, you can think of **your Angular application
 
 This tree structure is important to understanding several other Angular concepts, including **dependency injection** and **child queries**.
 
+## Importing and using components
+
+Angular supports two ways of making a component available to other components: as a **standalone component** or in an **NgModule**.
+
+## Standalone components
+
+A **standalone component** is a component that sets **standalone: true** in its component metadata. 
+
+Standalone components directly import other components, directives, and pipes used in their templates:
+
+```typescript
+@Component({
+  standalone: true,
+  selector: 'profile-photo',
+})
+export class ProfilePhoto { }
+
+@Component({
+  standalone: true,
+  imports: [ProfilePhoto],
+  template: `<profile-photo />`
+})
+export class UserProfile { }
+```
+
+Standalone components are directly importable into other standalone components.
+
+The Angular team recommends using standalone components for all new development.
+
+
 
