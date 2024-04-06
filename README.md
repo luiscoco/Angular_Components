@@ -328,7 +328,7 @@ export class YouTubeUploadButton { }
 ```
 ## 5. Styling components
 
-Components can optionally include **CSS styles** that apply to that component's DOM:
+Components can optionally include **CSS styles** that apply to that **component's DOM**:
 
 ```typescript
 @Component({
@@ -339,7 +339,7 @@ Components can optionally include **CSS styles** that apply to that component's 
 export class ProfilePhoto { }
 ```
 
-You can also choose to write your styles in separate files:
+You can also choose to write your styles in **separate files**:
 
 ```typescript
 @Component({
@@ -356,31 +356,94 @@ This means that component styles participate in the JavaScript module system. Wh
 
 ### 5.1  Style scoping
 
-Every component has a **view encapsulation** setting that determines how the framework scopes a component's styles. 
+In Angular, style scoping refers to the application of CSS styles in a way that they only affect a specific component, rather than leaking out and impacting other elements or components within the application. This is achieved through Angular's view encapsulation mechanism.
 
-There are three view encapsulation modes: Emulated, ShadowDom, and None. You can specify the mode in the **@Component** decorator:
+Angular offers three kinds of view encapsulation:
+
+Emulated (the default): Styles defined in a component's CSS file are scoped to that component. Angular achieves this by transforming the CSS selectors to target only the specific component's template and adding special attributes to the component's elements.
+
+None: No style encapsulation is applied. Styles defined in a component's CSS file can affect other components' templates if the selectors match. This is essentially like global styles.
+
+ShadowDom: Uses the browser's native Shadow DOM technology to encapsulate styles. Styles defined in a component's CSS file are applied to the component's template within a shadow DOM.
+
+#### 5.1.1. Emulated Encapsulation
+
+In emulated mode, Angular modifies the CSS selectors and adds attributes to elements of the component to ensure styles are scoped. For instance:
 
 ```typescript
+// app.component.ts
 @Component({
-  ...,
-  encapsulation: ViewEncapsulation.None,
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.Emulated // This is default, so it can be omitted
 })
-export class ProfilePhoto { }
+export class AppComponent {
+  title = 'angular-style-scoping';
+}
 ```
 
-### 5.2. ViewEncapsulation.Emulated
+```css
+/* app.component.css */
+h1 {
+  color: red;
+}
+```
 
-By default, Angular uses emulated encapsulation so that a component's styles only apply to elements defined in that component's template. 
- 
-In this mode, the framework generates a unique HTML attribute for each component instance, adds that attribute to elements in the component's template, and inserts that attribute into the CSS selectors defined in your component's styles.
+```html
+<!-- app.component.html -->
+<h1>Welcome to Angular Style Scoping!</h1>
+```
 
-This mode ensures that a component's styles do not leak out and affect other components. However, global styles defined outside of a component may still affect elements inside a component with emulated encapsulation.
+Angular transforms the CSS and template so that the h1 style only applies to the h1 within AppComponent.
 
-In emulated mode, Angular supports the :host and :host-context pseudo classes without using Shadow DOM. 
+#### 5.1.2. None Encapsulation
 
-During compilation, the framework transforms these pseudo classes into attributes. Angular's emulated encapsulation mode does not support any other pseudo classes related to Shadow DOM, such as ::shadow or ::part.
+Using ViewEncapsulation.None means styles can bleed out to other components.
 
-### 5.3. ::ng-deep
+```typescript
+// app.component.ts
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.None
+})
+export class AppComponent {
+  title = 'angular-style-scoping';
+}
+```
+
+In this case, the h1 style in app.component.css can affect h1 elements in other components.
+
+#### 5.1.3. ShadowDom Encapsulation
+
+When using ShadowDom, styles are scoped to the component by the browser's shadow DOM.
+
+```typescript
+// app.component.ts
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom
+})
+export class AppComponent {
+  title = 'angular-style-scoping';
+}
+```
+
+This approach uses the browser's built-in shadow DOM to encapsulate styles. 
+
+The h1 style in app.component.css will only affect h1 elements inside the shadow DOM of AppComponent.
+
+**Conclusion**
+
+Angular's style scoping allows for a modular and encapsulated approach to styling components, making it easier to manage styles in a large application without worrying about styles clashing or leaking across components.
+
+Depending on the project requirements and browser support, you can choose the encapsulation strategy that best fits your needs.
+
+### 5.2. ::ng-deep
 
 Angular's emulated encapsulation mode supports a custom pseudo class, :ng-deep. 
 
@@ -388,29 +451,7 @@ Applying this pseudo class to a CSS rule disables encapsulation for that rule, e
 
 The Angular team strongly discourages new use of ::ng-deep. These APIs remain exclusively for backwards compatibility.
 
-### 5.4. ViewEncapsulation.ShadowDom
-
-This mode scopes styles within a component by using the web **standard Shadow DOM API**. 
-
-When enabling this mode, Angular attaches a shadow root to the component's host element and renders the component's template and styles into the corresponding shadow tree.
-
-This mode strictly guarantees that only that component's styles apply to elements in the component's template. 
-
-Global styles cannot affect elements in a shadow tree and styles inside the shadow tree cannot affect elements outside of that shadow tree.
-
-Enabling ShadowDom encapsulation, however, impacts more than style scoping. 
-
-Rendering the component in a shadow tree affects event propagation, interaction with the <slot> API, and how browser developer tools show elements. 
-
-Always understand the full implications of using Shadow DOM in your application before enabling this option.
-
-### 5.5. ViewEncapsulation.None
-
-This mode **disables all style encapsulation** for the component. 
-
-Any styles associated with the component behave as global styles.
-
-### 5.6. Defining styles in templates
+### 5.3. Defining styles in templates
 
 You can use the **<style>** element in a component's template to define additional styles. 
 
@@ -418,7 +459,7 @@ The component's view encapsulation mode applies to styles defined this way.
 
 Angular does not support bindings inside of style elements.
 
-### 5.7. Referencing external style files
+### 5.4. Referencing external style files
 
 Component templates can use the **<link>** element to **reference CSS files**. 
 
