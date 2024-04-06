@@ -126,3 +126,50 @@ The Angular team recommends using standalone components for all new development.
 
 Angular code that predates standalone components uses NgModule as a mechanism for importing and using other components. See the full NgModule guide for details.
 
+## Component selectors
+
+Every component defines a **CSS selector** that determines how the component is used:
+
+```typescript
+@Component({
+  selector: 'profile-photo',
+  ...
+})
+export class ProfilePhoto { }
+```
+
+You use a component by creating a matching HTML element in the templates of other components:
+
+```typescript
+@Component({
+  template: `
+    <profile-photo />
+    <button>Upload a new profile photo</button>`,
+  ...,
+})
+export class UserProfile { }
+```
+
+Angular matches selectors statically at compile-time. Changing the DOM at run-time, either via Angular bindings or with DOM APIs, does not affect the components rendered.
+
+An element can match exactly one component selector. If multiple component selectors match a single element, Angular reports an error.
+
+Component selectors are **case-sensitive**.
+
+## Types of selectors
+
+Angular supports a limited subset of basic CSS selector types in component selectors:
+
+**Type selector**:	Matches elements based on their HTML tag name, or node name.
+
+**Attribute selector**¨: Matches elements based on the presence of an HTML attribute and, optionally, an exact value for that attribute.
+
+**Class selector**:	Matches elements based on the presence of a CSS class.
+
+For attribute values, Angular supports matching an exact attribute value with the equals (=) operator. Angular does not support other attribute value operators.
+
+Angular component selectors do not support combinators, including the descendant combinator or child combinator.
+
+Angular component selectors do not support specifying namespaces.
+
+
