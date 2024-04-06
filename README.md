@@ -1,6 +1,6 @@
 # Angular Components
 
-## Anatomy of a component
+## 1. Anatomy of a component
 
 Every component must have:
 
@@ -52,7 +52,7 @@ This can help separate the concerns of presentation from behavior in your projec
 
 Both **templateUrl** and **styleUrl** are relative to the directory in which the component resides.
 
-## Using components
+## 2. Using components
 
 Every component defines a **CSS selector**:
 
@@ -93,11 +93,11 @@ In composing components in this way, you can think of **your Angular application
 
 This tree structure is important to understanding several other Angular concepts, including **dependency injection** and **child queries**.
 
-## Importing and using components
+## 3. Importing and using components
 
 Angular supports two ways of making a component available to other components: as a **standalone component** or in an **NgModule**.
 
-## Standalone components
+### 3.1. Standalone components
 
 A **standalone component** is a component that sets **standalone: true** in its component metadata. 
 
@@ -122,11 +122,11 @@ Standalone components are directly importable into other standalone components.
 
 The Angular team recommends using standalone components for all new development.
 
-## NgModules
+### 3.2. NgModules
 
 Angular code that predates standalone components uses NgModule as a mechanism for importing and using other components. See the full NgModule guide for details.
 
-## Component selectors
+## 4. Component selectors
 
 Every component defines a **CSS selector** that determines how the component is used:
 
