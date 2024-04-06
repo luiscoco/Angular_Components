@@ -12,7 +12,7 @@ A **CSS selector** that defines how the component is used in HTML
 
 You provide Angular-specific information for a component by adding a @Component decorator on top of the TypeScript class:
 
-```angular
+```typescript
 @Component({
   selector: 'profile-photo',
   template: `<img src="profile-photo.jpg" alt="Your profile photo">`,
