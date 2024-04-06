@@ -138,7 +138,7 @@ Every component defines a **CSS selector** that determines how the component is 
 export class ProfilePhoto { }
 ```
 
-You use a component by creating a matching HTML element in the templates of other components:
+You use a component by creating a matching **HTML element** in the templates of other components:
 
 ```typescript
 @Component({
@@ -156,7 +156,7 @@ An element can match exactly one component selector. If multiple component selec
 
 Component selectors are **case-sensitive**.
 
-## Types of selectors
+### 4.1 Types of selectors
 
 Angular supports a limited subset of basic CSS selector types in component selectors:
 
@@ -172,7 +172,7 @@ Angular component selectors do not support combinators, including the descendant
 
 Angular component selectors do not support specifying namespaces.
 
-## The :not pseudo-class
+### 4.2. The :not pseudo-class
 
 Angular supports the **:not pseudo-class**. You can append this pseudo-class to any other selector to narrow which elements a component's selector matches. 
 
@@ -188,7 +188,7 @@ export class DropZone { }
 
 Angular does not support any other pseudo-classes or pseudo-elements in component selectors.
 
-## Combining selectors
+### 4.3. Combining selectors
 
 You can combine multiple selectors by concatenating them. For example, you can match <button> elements that specify type="reset":
 
@@ -212,7 +212,7 @@ export class DropZone { }
 
 Angular creates a component for each element that matches any of the selectors in the list.
 
-## When to use an attribute selector
+### 4.4. When to use an attribute selector
 
 You should consider an attribute selector when you want to create a component on a standard native element.
 
@@ -229,3 +229,5 @@ export class YouTubeUploadButton { }
 ```html
 <button yt-upload="true">Upload Video</button>
 ```
+
+
