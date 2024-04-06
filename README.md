@@ -122,5 +122,7 @@ Standalone components are directly importable into other standalone components.
 
 The Angular team recommends using standalone components for all new development.
 
+## NgModules
 
+Angular code that predates standalone components uses NgModule as a mechanism for importing and using other components. See the full NgModule guide for details.
 
