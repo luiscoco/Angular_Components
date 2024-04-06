@@ -172,7 +172,104 @@ Angular component selectors do not support combinators, including the descendant
 
 Angular component selectors do not support specifying namespaces.
 
-### 4.2. The :not pseudo-class
+### 4.2. Selectors samples
+
+#### Element Selector
+
+The **element selector** is the most common and straightforward type of selector. 
+
+It allows you to use the component as an HTML element within your templates.
+
+```typescript
+@Component({
+  selector: 'app-my-component',
+  template: `<p>Hello from My Component!</p>`,
+})
+export class MyComponent {}
+```
+
+Usage in HTML:
+
+```html
+Copy code
+<app-my-component></app-my-component>
+```
+
+#### Attribute Selector
+
+You can also define a selector as an attribute. 
+
+This is useful when you want to attach behavior or styling to existing elements without changing the HTML structure significantly.
+
+```typescript
+@Component({
+  selector: '[appHighlight]',
+  template: `<p>This paragraph will be styled with appHighlight.</p>`,
+})
+export class HighlightComponent {}
+```
+
+Usage in HTML:
+
+```html
+<p appHighlight>This text will be highlighted.</p>
+```
+
+#### Class Selector
+
+Angular components can also be selected by CSS class. 
+
+This is less common but might be useful in scenarios where you want to apply component behavior based on CSS classes.
+
+```typescript
+@Component({
+  selector: '.app-my-class',
+  template: `<p>This component is selected by class!</p>`,
+})
+export class MyClassComponent {}
+Usage in HTML:
+
+```html
+<div class="app-my-class"></div>
+```
+
+Note: While class selectors can be used, they're generally not recommended for components because Angular adds and removes these classes dynamically, which can interfere with styling and component functionality.
+
+#### Combination Selector
+
+You can combine multiple selectors using a comma to apply a component or directive in different ways. This allows for flexible usage of components across your application.
+
+```typescript
+@Directive({
+  selector: 'input[appAutoFocus], textarea[appAutoFocus]',
+})
+export class AutoFocusDirective {
+  // Directive logic here
+}
+```
+
+Usage in HTML:
+
+```html
+<input appAutoFocus type="text">
+<textarea appAutoFocus></textarea>
+```
+
+This directive can be applied to both **input** and **textarea** elements that have the **appAutoFocus attribute**.
+
+**Summary**
+
+**Element selectors** are used to define new elements in your application.
+
+**Attribute selectors** are useful for adding behavior to existing elements without changing their type.
+
+**Class selectors** are less common and not recommended for components due to potential dynamic class manipulation by Angular.
+
+**Combination selectors** offer flexibility in how components or directives can be applied, allowing them to work in multiple contexts.
+
+**Selectors** provide a powerful way to define how and where your components and directives are applied, enabling you to build more modular and reusable Angular applications.
+
+### 4.3. The :not pseudo-class
 
 Angular supports the **:not pseudo-class**. You can append this pseudo-class to any other selector to narrow which elements a component's selector matches. 
 
@@ -188,7 +285,7 @@ export class DropZone { }
 
 Angular does not support any other pseudo-classes or pseudo-elements in component selectors.
 
-### 4.3. Combining selectors
+### 4.4. Combining selectors
 
 You can combine multiple selectors by concatenating them. For example, you can match <button> elements that specify type="reset":
 
@@ -212,7 +309,7 @@ export class DropZone { }
 
 Angular creates a component for each element that matches any of the selectors in the list.
 
-### 4.4. When to use an attribute selector
+### 4.5. When to use an attribute selector
 
 You should consider an attribute selector when you want to create a component on a standard native element.
 
