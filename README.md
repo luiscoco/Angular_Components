@@ -160,16 +160,18 @@ Component selectors are **case-sensitive**.
 
 Angular supports a limited subset of basic CSS selector types in component selectors:
 
-**Type selector**:	Matches elements based on their HTML tag name, or node name.
+**Type selector**:	Matches elements based on their **HTML tag name**, or **node name**.
 
-**Attribute selector**¨: Matches elements based on the presence of an HTML attribute and, optionally, an exact value for that attribute.
+**Attribute selector**¨: Matches elements based on the presence of an **HTML attribute** and, optionally, an exact **value for that attribute**.
 
-**Class selector**:	Matches elements based on the presence of a CSS class.
+**Class selector**:	Matches elements based on the presence of a **CSS class**.
 
 For attribute values, Angular supports matching an exact attribute value with the equals (=) operator. Angular does not support other attribute value operators.
 
 Angular component selectors do not support combinators, including the descendant combinator or child combinator.
 
 Angular component selectors do not support specifying namespaces.
+
+
 
 
