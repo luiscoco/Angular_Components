@@ -172,6 +172,60 @@ Angular component selectors do not support combinators, including the descendant
 
 Angular component selectors do not support specifying namespaces.
 
+## The :not pseudo-class
 
+Angular supports the **:not pseudo-class**. You can append this pseudo-class to any other selector to narrow which elements a component's selector matches. 
 
+For example, you could define a **[dropzone] attribute selector** and prevent matching textarea elements:
 
+```typescript
+@Component({
+  selector: '[dropzone]:not(textarea)',
+  ...
+})
+export class DropZone { }
+```
+
+Angular does not support any other pseudo-classes or pseudo-elements in component selectors.
+
+## Combining selectors
+
+You can combine multiple selectors by concatenating them. For example, you can match <button> elements that specify type="reset":
+
+```typescript
+@Component({
+  selector: 'button[type="reset"]',
+  ...
+})
+export class ResetButton { }
+```
+
+You can also define multiple selectors with a comma-separated list:
+
+```typescript
+@Component({
+  selector: 'drop-zone, [dropzone]',
+  ...
+})
+export class DropZone { }
+```
+
+Angular creates a component for each element that matches any of the selectors in the list.
+
+## When to use an attribute selector
+
+You should consider an attribute selector when you want to create a component on a standard native element.
+
+For example, if you want to create a custom button component, you can take advantage of the standard <button> element by using an attribute selector:
+
+```typescript
+@Component({
+  selector: 'button[yt-upload]',
+   ...
+})
+export class YouTubeUploadButton { }
+```
+
+```html
+<button yt-upload="true">Upload Video</button>
+```
