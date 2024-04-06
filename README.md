@@ -51,3 +51,46 @@ export class ProfilePhoto { }
 This can help separate the concerns of presentation from behavior in your project. You can choose one approach for your entire project, or you decide which to use for each component.
 
 Both **templateUrl** and **styleUrl** are relative to the directory in which the component resides.
+
+## Using components
+
+Every component defines a **CSS selector**:
+
+```typescript
+@Component({
+  selector: 'profile-photo',
+  ...
+})
+export class ProfilePhoto { }
+```
+
+See **Component Selectors** for details about which types of selectors Angular supports and guidance on choosing a selector.
+
+You use a component by creating a matching HTML element in the template of other components:
+
+```typescript
+@Component({
+  selector: 'user-profile',
+  template: `
+    <profile-photo />
+    <button>Upload a new profile photo</button>`,
+  ...,
+})
+export class UserProfile { }
+```
+
+See Importing and using components for details on how to reference and use other components in your template.
+
+Angular creates an instance of the component for every matching HTML element it encounters. 
+
+The DOM element that matches a component's selector is referred to as that component's host element. The contents of a component's template are rendered inside its host element.
+
+The **DOM** rendered by a component, corresponding to that **component's template**, is called that **component's view**.
+
+In composing components in this way, you can think of **your Angular application as a tree of components**.
+
+![image](https://github.com/luiscoco/Angular_Components/assets/32194879/94da428d-fe30-4dfc-944f-5566c3fb4e58)
+
+This tree structure is important to understanding several other Angular concepts, including **dependency injection** and **child queries**.
+
+
