@@ -1,5 +1,51 @@
 # Angular Components
 
+## Summary
+
+
+1. Component overview
+
+
+2. Component lifecycle
+
+
+3. View encapsulation
+
+
+
+4. Component interaction
+
+PARENT TO CHILD(INPUT property)
+
+4.1. Pass data from parent to child with input binding
+
+4.2. Intercept input property changes with a setter
+
+4.3. Intercept input property changes with ngOnChanges()
+
+CHILD TO PARENT(Emit Events)
+
+4.4. Parent listens for child event
+
+4.5. Parent interacts with child using local variable
+
+4.6. Parent calls an @ViewChild()
+
+4.7. Parent and children communicate using a service
+
+5. Component styles
+
+6. Sharing data between child and parent directives and components
+
+7. Content projection
+
+8. Dynamic components
+
+9. Angular elements (Web Components)
+
+**HTML elements** have properties, for example the HTML elemet inputbox has the tag <input> and the property type="text"
+**https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input**
+
 ## 1. Anatomy of a component
 
 Every component must have:
