@@ -34,6 +34,8 @@
 
 4.7. Parent and children communicate using a service
 
+-----------------------------------------------------------------
+
 5. Component styles
 
 6. Sharing data between child and parent directives and components
