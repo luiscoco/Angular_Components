@@ -2,20 +2,17 @@
 
 ## Summary
 
-
 1. Component overview
-
 
 2. Component lifecycle
 
-
 3. View encapsulation
 
-
+-----------------------------------------------------------------
 
 4. Component interaction
 
-PARENT TO CHILD(INPUT property)
+**PARENT TO CHILD(INPUT property)**
 
 4.1. Pass data from parent to child with input binding
 
@@ -23,9 +20,13 @@ PARENT TO CHILD(INPUT property)
 
 4.3. Intercept input property changes with ngOnChanges()
 
-CHILD TO PARENT(Emit Events)
+-----------------------------------------------------------------
+
+**CHILD TO PARENT(Emit Events)**
 
 4.4. Parent listens for child event
+
+-----------------------------------------------------------------
 
 4.5. Parent interacts with child using local variable
 
