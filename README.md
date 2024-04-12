@@ -1,5 +1,11 @@
 # Angular Components
 
+**https://developer.mozilla.org/en-US/docs/Web/Tutorials**
+
+**https://developer.mozilla.org/en-US/play**
+
+**https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input**
+
 ## Summary
 
 1. Component overview
