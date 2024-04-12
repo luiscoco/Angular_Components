@@ -239,7 +239,6 @@ export class MyComponent {}
 Usage in HTML:
 
 ```html
-Copy code
 <app-my-component></app-my-component>
 ```
 
