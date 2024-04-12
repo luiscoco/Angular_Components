@@ -41,6 +41,8 @@ CHILD TO PARENT(Emit Events)
 
 8. Dynamic components
 
+ ![image](https://github.com/luiscoco/Angular_Components/assets/32194879/845d2bfc-c166-47ab-a959-28bde7973625)
+
 9. Angular elements (Web Components)
 
 **HTML elements** have properties, for example the HTML elemet inputbox has the tag <input> and the property/attribute type="text"
