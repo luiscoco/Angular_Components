@@ -43,7 +43,7 @@ CHILD TO PARENT(Emit Events)
 
 9. Angular elements (Web Components)
 
-**HTML elements** have properties, for example the HTML elemet inputbox has the tag <input> and the property type="text"
+**HTML elements** have properties, for example the HTML elemet inputbox has the tag <input> and the property/attribute type="text"
 **https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input**
 
 ## 1. Anatomy of a component
