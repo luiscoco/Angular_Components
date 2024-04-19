@@ -1,10 +1,8 @@
 # Angular Components
 
-**https://developer.mozilla.org/en-US/docs/Web/Tutorials**
+**https://angular.dev/**
 
-**https://developer.mozilla.org/en-US/play**
-
-**https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input**
+**https://angular.io/**
 
 ## Summary
 
